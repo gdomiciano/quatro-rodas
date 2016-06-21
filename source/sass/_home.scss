@@ -1,0 +1,22 @@
+.highlighted{
+    .highlighted-images{
+        img{
+            width: 100%;
+        }
+    }
+}
+.others{
+    display:none;
+}
+
+@media screen and (min-width: 1024px){
+    .others{
+        display:block;
+        margin: 10px 0;
+        .others-images{
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
