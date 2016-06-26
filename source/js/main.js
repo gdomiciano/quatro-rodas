@@ -70,7 +70,6 @@ QR.main = {};
                 $categories = $this.find('.categories'),
                 $subItems = $this.find('.sub-items');
 
-
             if(! $subMenu.is(':visible')){
                 $('.menu .item').removeClass('current');
                 $('.menu .sub-menu').hide();
@@ -84,8 +83,6 @@ QR.main = {};
                     $icon.addClass('fa-angle-down').removeClass('fa-angle-up');
                 });
             }
-
-
         });
     }
 
@@ -123,6 +120,15 @@ QR.main = {};
             initDesktop();
         }
     }
+
+    $(window).resize(function() {
+        if(this.resizeTO){
+            clearTimeout(this.resizeTO);    
+        } 
+        this.resizeTO = setTimeout(function() {
+            console.log('resize');
+        }, 500);
+    });
 
     // Externaliza
     QR.main.init = init();

@@ -3,6 +3,10 @@ module.exports = function (grunt) {
     // Project configuration.
     grunt.initConfig({
         path: {
+            WPcss: 'wordpress/css/',
+            WPfonts: 'wordpress/fonts/',
+            WPimg: 'wordpress/img/',
+            WPjs: 'wordpress/js/',
             css: 'dist/css/',
             fonts: 'dist/fonts/',
             img: 'dist/img/',
@@ -73,7 +77,7 @@ module.exports = function (grunt) {
                     cssDir: '<%= path.css %>',
                     imageDir: '<%= path.imgsrc %>',
                     environment: 'development',
-                    outputStyle: 'compact',
+                    outputStyle: 'compress',
                     noLineComments: true,
                     relativeAssets: true
                 }
