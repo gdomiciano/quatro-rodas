@@ -9,18 +9,19 @@
         elseif ( is_404() ) { bloginfo('name'); print ' | Not Found'; }
         else { bloginfo('name'); wp_title('|'); get_page_number(); }
     ?></title>
-     <meta http-equiv="content-type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-     <link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>" />
-     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+    <meta http-equiv="content-type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>" />
+    <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 </head>
 <body>
     <header id="header">
         <div id="masthead" class="container">
-            <section class="header-ad">
-                <picture class="ad">
+            <section class="top-header">
+                <picture class="top-image">
                     <source srcset="<?php echo get_template_directory_uri();?>/img/desktop/banner.jpg" media="(min-width: 1024px)">
                     <source srcset="<?php echo get_template_directory_uri();?>/img/mobile/banner.jpg">
-                    <img srcset="img/mobile/banner.jpg" alt="">
+                    <img srcset="<?php echo get_template_directory_uri();?>/img/mobile/banner.jpg" alt="">
                 </picture>
             </section>
             <section class="header">
