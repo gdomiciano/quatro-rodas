@@ -33,13 +33,14 @@ QR.main = {};
        $menu.removeAttr('style');
        $bars.removeAttr('style');
        $times.removeAttr('style');
-       
+       $searchContent.removeAttr('style');
+       $menuIcon.removeClass('open');
+       $searchIcon.removeClass('open');
     }
 
     function initMobile(){
-        console.log('initMobile');
         reset();
-        $('.fa-search').on('click', function(e){
+        $('.fa-search').off('click').on('click', function(e){
             var $this = $(this);
 
             if($('.menu').is(':visible')){
@@ -50,14 +51,14 @@ QR.main = {};
                 $this.addClass('open');
                 $searchContent.slideDown('fast', function(){
                     $field.focus();
-                })
+                });
             }else{
                 closeSearch();
                 
             }
         });
 
-        $('.hamburger').on('click', function(e){
+        $('.hamburger').off('click').on('click', function(e){
             var $this = $(this);
 
             if($('.search-content').is(':visible')){
@@ -74,7 +75,7 @@ QR.main = {};
             }
         });
 
-        $('.item').on('click', function(){
+        $('.item').off('click').on('click', function(){
             var $this = $(this),
                 $icon = $this.find('.fa'),
                 $subMenu = $this.find('.sub-menu'),
@@ -98,10 +99,9 @@ QR.main = {};
     }
 
     function initDesktop(){
-        console.log('initDesktop');
         reset();
 
-        $('.item').on('click', function(){
+        $('.item').off('click').on('click', function(){
             var $this = $(this),
                 $icon = $this.find('.fa'),
                 $subMenu = $this.find('.sub-menu'),
@@ -127,8 +127,7 @@ QR.main = {};
     }
 
     function init(){
-        console.log('init');
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.innerWidth < 1024) {
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 1024) {
             initMobile();
         }else{
             initDesktop();
@@ -140,10 +139,8 @@ QR.main = {};
             clearTimeout(this.resizeTO);    
         } 
         this.resizeTO = setTimeout(function() {
-            console.log('resize');
             init();
-            
-        }, 500);
+        }, 300);
     });
 
     // Externaliza

@@ -11,10 +11,6 @@
     position: relative;
     font-family: $dosis;
     
-    .link{
-        color: $white;
-        text-decoration: none;
-    }
     .open{
         background: $headerActive;
     }
@@ -414,6 +410,13 @@
                         }
                     }
                 }
+            }
+        }
+    }
+    .popular{
+        .popular-items{
+            .popular-item{
+                margin: 0 20px;
             }
         }
     }

@@ -2890,6 +2890,11 @@ textarea {
   font-weight: normal;
   font-style: normal;
 }
+.link {
+  color: #fff;
+  text-decoration: none;
+}
+
 @media screen and (min-width: 1024px) {
   .container {
     width: 1024px;
@@ -2913,10 +2918,6 @@ textarea {
   color: #fff;
   position: relative;
   font-family: "Dosis", helvetica, sans-serif;
-}
-.header .link {
-  color: #fff;
-  text-decoration: none;
 }
 .header .open {
   background: #d41f1f;
@@ -3307,6 +3308,10 @@ textarea {
   }
   .header .menu .sub-menu.tests .sub-items .sub-item .description, .header .menu .sub-menu.news .sub-items .sub-item .description {
     font-size: 14px;
+  }
+
+  .popular .popular-items .popular-item {
+    margin: 0 20px;
   }
 }
 .highlighted .highlighted-images img {
