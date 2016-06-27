@@ -33,7 +33,7 @@ module.exports = function (grunt) {
             },
             js: {
                 files: '<%= path.jssrc %>**/*.js',
-                tasks: ['copy:alljs', 'uglify:myjs','copy:alljsForWP'/*, 'uglify:myjsForWP'*/]
+                tasks: ['copy:alljs', 'uglify:myjs','copy:alljsForWP', 'uglify:myjsForWP']
             },
             img: {
                 files: '<%= path.imgsrc %>**/*.{jpg,gif,png}',
