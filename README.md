@@ -18,6 +18,10 @@ Teste para Abril - site Quatro Rodas
 	1. Execute o comando `npm install`;
 	1. digite o comando `grunt build` para compilar o projeto;
 	1. execute o arquivo index.html da pasta dist.
+	
+* **Wordpress tema customizado**
+	* Os assets da pasta source são compilados para a pasta do tema do wordpress com o comando: `grunt buildwp`;
+	* os arquivos de template estão no seguinte caminho: wordpress/wp-content/themes/quatrorodas/ .
 
 ### Bibliotecas/Frameworks ###
 
