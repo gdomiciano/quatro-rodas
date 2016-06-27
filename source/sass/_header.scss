@@ -1,5 +1,5 @@
     
-.header-ad{
+.top-header{
     padding: 6px 10px;
     text-align:center;
     background:$bg;
@@ -175,7 +175,7 @@
 }
 
 @media screen and (min-width: 1024px){
-    .header-ad{
+    .top-header{
         position: fixed;
         width: 1024px;
         top: 0;
@@ -361,7 +361,7 @@
     }
 }
 @media screen and (min-width: 1320px){
-    .header-ad{
+    .top-header{
         width: 1320px;
     }
     .header{

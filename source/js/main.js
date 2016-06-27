@@ -9,15 +9,19 @@ QR.main = {};
         $searchContent = $('.search-content'),
         $field = $('.search-field'),
         $menu = $('.menu'),
+        $item = $('.menu .item'),
         $bars = $('.fa-bars'),
         $times = $('.fa-times');
 
+
     function closeSearch(){
+        console.log('closeSearch');
         $searchContent.slideUp('fast');
         $searchIcon.removeClass('open');
     }
 
     function closeMenu(){
+        console.log('closeMenu');
         $menu.slideUp('fast');
         $menuIcon.removeClass('open');
         $times.fadeOut(100, function(){
@@ -25,8 +29,16 @@ QR.main = {};
         });
     }
 
+    function reset(){
+       $menu.removeAttr('style');
+       $bars.removeAttr('style');
+       $times.removeAttr('style');
+       
+    }
 
     function initMobile(){
+        console.log('initMobile');
+        reset();
         $('.fa-search').on('click', function(e){
             var $this = $(this);
 
@@ -34,7 +46,7 @@ QR.main = {};
                closeMenu();
             }
 
-            if(! $searchContent.is(':visible')){
+            if(!$searchContent.is(':visible')){
                 $this.addClass('open');
                 $searchContent.slideDown('fast', function(){
                     $field.focus();
@@ -48,16 +60,15 @@ QR.main = {};
         $('.hamburger').on('click', function(e){
             var $this = $(this);
 
-            if( $('.search-content').is(':visible')){
+            if($('.search-content').is(':visible')){
                 closeSearch();
             }
-            if(! $menu.is(':visible')){
+            if(!$menu.is(':visible')){
                 $menu.slideDown('fast');
                 $this.addClass('open');
                 $bars.fadeOut(100, function(){
                     $times.fadeIn(50);
                 });
-
             }else{
                 closeMenu();
             }
@@ -70,8 +81,8 @@ QR.main = {};
                 $categories = $this.find('.categories'),
                 $subItems = $this.find('.sub-items');
 
-            if(! $subMenu.is(':visible')){
-                $('.menu .item').removeClass('current');
+            if(!$subMenu.is(':visible')){
+                $item.removeClass('current');
                 $('.menu .sub-menu').hide();
                 $('.menu .fa').addClass('fa-angle-down').removeClass('fa-angle-up');
                 $subMenu.slideDown('fast');
@@ -87,7 +98,9 @@ QR.main = {};
     }
 
     function initDesktop(){
-        
+        console.log('initDesktop');
+        reset();
+
         $('.item').on('click', function(){
             var $this = $(this),
                 $icon = $this.find('.fa'),
@@ -95,8 +108,8 @@ QR.main = {};
                 $categories = $this.find('.categories'),
                 $subItems = $this.find('.sub-items');
 
-            if(! $subMenu.is(':visible')){
-                $('.menu .item').removeClass('current');
+            if(!$subMenu.is(':visible')){
+                $item.removeClass('current');
                 $('.menu .sub-menu').hide();
                 $('.menu .fa').addClass('fa-angle-down').removeClass('fa-angle-up');
                 $subMenu.slideDown('fast');
@@ -114,7 +127,8 @@ QR.main = {};
     }
 
     function init(){
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        console.log('init');
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.innerWidth < 1024) {
             initMobile();
         }else{
             initDesktop();
@@ -127,9 +141,14 @@ QR.main = {};
         } 
         this.resizeTO = setTimeout(function() {
             console.log('resize');
+            init();
+            
         }, 500);
     });
 
     // Externaliza
-    QR.main.init = init();
+    QR.main.init = init;
+    QR.main.desktop = initDesktop;
+    QR.main.mobile = initMobile;
+    init();
 }(this, document, jQuery));

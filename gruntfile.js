@@ -3,10 +3,10 @@ module.exports = function (grunt) {
     // Project configuration.
     grunt.initConfig({
         path: {
-            WPcss: 'wordpress/css/',
-            WPfonts: 'wordpress/fonts/',
-            WPimg: 'wordpress/img/',
-            WPjs: 'wordpress/js/',
+            WPcss: 'wordpress/wp-content/themes/quatrorodas/css/',
+            WPfonts: 'wordpress/wp-content/themes/quatrorodas/fonts/',
+            WPimg: 'wordpress/wp-content/themes/quatrorodas/img/',
+            WPjs: 'wordpress/wp-content/themes/quatrorodas/js/',
             css: 'dist/css/',
             fonts: 'dist/fonts/',
             img: 'dist/img/',
@@ -25,7 +25,7 @@ module.exports = function (grunt) {
             },
             sass: {
                 files: '<%= path.sass %>**/*.scss',
-                tasks: ['compass:compile']
+                tasks: ['compass:compile','compass:compileForWP']
             },
             html: {
                 files: '<%= path.htmlsrc %>**/*.html',
@@ -33,20 +33,47 @@ module.exports = function (grunt) {
             },
             js: {
                 files: '<%= path.jssrc %>**/*.js',
-                tasks: ['copy:alljs', 'uglify:myjs']
+                tasks: ['copy:alljs', 'uglify:myjs','copy:alljsForWP', 'uglify:myjsForWP']
             },
             img: {
                 files: '<%= path.imgsrc %>**/*.{jpg,gif,png}',
-                tasks: ['imagemin:allimg']
+                tasks: ['imagemin:allimg','imagemin:allimgForWP']
             },
             fonts: {
                 files: '<%= path.fontssrc %>**/*.{ttf,svg,woff,woof2,eot}',
-                tasks: ['copy:allfonts']
+                tasks: ['copy:allfonts','copy:allfontsForWP']
+            }
+        },
+        watchForWP: {
+            options: {
+                livereload: true
+            },
+            sass: {
+                files: '<%= path.sass %>**/*.scss',
+                tasks: ['compass:compileForWP']
+            },
+            js: {
+                files: '<%= path.jssrc %>**/*.js',
+                tasks: ['copy:alljsForWP', 'uglify:myjsForWP']
+            },
+            img: {
+                files: '<%= path.imgsrc %>**/*.{jpg,gif,png}',
+                tasks: ['imagemin:allimgForWP']
+            },
+            fonts: {
+                files: '<%= path.fontssrc %>**/*.{ttf,svg,woff,woof2,eot}',
+                tasks: ['copy:allfontsForWP']
             }
         },
         //Clean Task
         clean: {
-            build: ['dist/']
+            build: ['dist/'],
+            ForWP: [
+                '<%= path.WPjs %>',
+                '<%= path.WPcss %>',
+                '<%= path.WPfonts %>',
+                '<%= path.WPimg %>'
+            ]
         },
         //Copy Task
         copy: {
@@ -67,6 +94,24 @@ module.exports = function (grunt) {
                 cwd: '<%= path.fontssrc %>',
                 src: '**/*.*',
                 dest: '<%= path.fonts %>'
+            },
+            alljsForWP: {
+                expand: true,
+                cwd: '<%= path.jssrc %>',
+                src: '**/*.js',
+                dest: '<%= path.WPjs %>'
+            },
+            allcssForWP: {
+                expand: true,
+                cwd: '<%= path.sass %>',
+                src: '**/*.css',
+                dest: '<%= path.WPcss %>'
+            },
+            allfontsForWP: {
+                expand: true,
+                cwd: '<%= path.fontssrc %>',
+                src: '**/*.*',
+                dest: '<%= path.WPfonts %>'
             }
         },
         //Compass Task
@@ -81,6 +126,17 @@ module.exports = function (grunt) {
                     noLineComments: true,
                     relativeAssets: true
                 }
+            },
+            compileForWP: {
+                options: {
+                    sassDir: '<%= path.sass %>',
+                    cssDir: '<%= path.WPcss %>',
+                    imageDir: '<%= path.imgsrc %>',
+                    environment: 'development',
+                    outputStyle: 'expand',
+                    noLineComments: true,
+                    relativeAssets: true
+                }
             }
         },
         //Imagemin Task
@@ -91,6 +147,14 @@ module.exports = function (grunt) {
                     cwd: '<%= path.imgsrc %>',
                     src: ['**/*.{png,jpg}'],
                     dest: '<%= path.img %>'
+                }]
+            },
+            allimgForWP: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= path.imgsrc %>',
+                    src: ['**/*.{png,jpg}'],
+                    dest: '<%= path.WPimg %>'
                 }]
             }
         },
@@ -124,6 +188,14 @@ module.exports = function (grunt) {
                     src: '**/*.js',
                     dest: '<%= path.js %>'
                 }]
+            },
+            myjsForWP: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= path.jssrc %>',
+                    src: '**/*.js',
+                    dest: '<%= path.WPjs %>'
+                }]
             }
         }
     });
@@ -137,6 +209,15 @@ module.exports = function (grunt) {
         grunt.task.run('imagemin:allimg');
         grunt.task.run('compass:compile');
         grunt.task.run('htmlmin:allhtml');
+    }
+    function runWPTasks() {
+        grunt.task.run('clean:ForWP');
+        grunt.task.run('copy:alljsForWP');
+        grunt.task.run('copy:allcssForWP');
+        grunt.task.run('copy:allfontsForWP');
+        grunt.task.run('uglify:myjsForWP');
+        grunt.task.run('imagemin:allimgForWP');
+        grunt.task.run('compass:compileForWP');
     }
 
 
@@ -152,4 +233,5 @@ module.exports = function (grunt) {
     // Default task(s).
     grunt.registerTask('default', ['watch']);
     grunt.registerTask('build', runAllTasks);
+    grunt.registerTask('buildwp', runWPTasks);
 };
