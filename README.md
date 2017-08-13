@@ -1,38 +1,42 @@
-# README #
+# Test from Abril #
+This is a code challenge that I did to [Abril] (http://grupoabril.com.br/pt/) in June, 2016.
+[Access the Challenge Result](https://gdomiciano.github.io/quatro-rodas/dist/)
 
-Teste para Abril - site Quatro Rodas
+## Challenge Requirements: ##
+Layout 4rodas 
 
-[Exemplo do teste funcionando](https://gdomiciano.github.io/quatro-rodas/dist/)
+ - Build a responsive web page, using javascript to enable/disable the menu. Use structured javascript if possible.
+ - The HTML5 and CSS3 must follow the semantic and responsive web application concepts;
+ - Integrate the developed code into [Wordpress](https://wordpress.org/download/) using includes and the best practices;
+ - Make this challenge public on your GitHub account.
 
-### Como Executar o Projeto ###
-
-* **Dependencias**
+**Dependencies**
 	* Node.js - https://nodejs.org/en/download/
 	* NPM - https://docs.npmjs.com/getting-started/installing-node
 	* Grunt - http://gruntjs.com/getting-started
 	* Ruby - http://www.ruby-lang.org/en/downloads/
 	* Compass - http://compass-style.org/install/
 	
-* **Configuração**
-	1. Abra o seu Terminal;
-	1. Execute o comando `git clone git@github.com:gdomiciano/quatro-rodas.git` para clonar o projeto
-	1. Vá até a pasta do projeto clonado;
-	1. Execute o comando `npm install`;
-	1. digite o comando `grunt build` para compilar o projeto;
-	1. execute o arquivo index.html da pasta dist.
+**Setup**
+	1. Open your terminal;
+	1. Clone this project: `git clone https://github.com/gdomiciano/responsive-header.git`;
+	1. Go to the project directory: `cd responsive-header`;
+	1. Install the project dependencies: `npm install`;
+	1. Compile the project via task runner: `grunt build`;
+	1. Open `dist/index.html` on Google Chrome.
 	
-* **Wordpress tema customizado**
-	* Os assets da pasta source são compilados para a pasta do tema do wordpress com o comando: `grunt buildwp`;
-	* os arquivos de template estão no seguinte caminho: wordpress/wp-content/themes/quatrorodas/ .
+**Customized Wordpress Theme**
+	* The assets are compiled from source directory to wordpress theme directory when the command `grunt buildwp` is executed;
+	* The template files are in the following path: wordpress/wp-content/themes/quatrorodas/ .
 
-### Bibliotecas/Frameworks ###
+### Libraries/Frameworks ###
 
 * jQuery
 * SaSS
 * Grunt
 * Font Awesome
 
-### Itens Adicionais ###
+### Extra Items###
 
-* Esta aplicação é responsiva;
-* O teste desta aplicação é recomendado no Google Chrome e seus emuladores.
+* This is an responsive web Application;
+* It's recomended to be teste on Google Chrome browser and emulators 
