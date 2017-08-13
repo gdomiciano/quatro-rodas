@@ -2,6 +2,8 @@
 
 Teste para Abril - site Quatro Rodas
 
+[Exemplo do teste funcionando](https://gdomiciano.github.io/quatro-rodas/dist/)
+
 ### Como Executar o Projeto ###
 
 * **Dependencias**
