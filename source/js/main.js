@@ -15,13 +15,13 @@ QR.main = {};
 
 
     function closeSearch(){
-        console.log('closeSearch');
+        //console.log('closeSearch');
         $searchContent.slideUp('fast');
         $searchIcon.removeClass('open');
     }
 
     function closeMenu(){
-        console.log('closeMenu');
+        //console.log('closeMenu');
         $menu.slideUp('fast');
         $menuIcon.removeClass('open');
         $times.fadeOut(100, function(){
@@ -143,7 +143,6 @@ QR.main = {};
         }, 300);
     });
 
-    // Externaliza
     QR.main.init = init;
     QR.main.desktop = initDesktop;
     QR.main.mobile = initMobile;

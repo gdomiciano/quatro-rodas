@@ -221,7 +221,7 @@ module.exports = function (grunt) {
     }
 
 
-    // Plugins.
+    // Plugins
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-compass');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -230,7 +230,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
 
-    // Default task(s).
+    // Default task(s)
     grunt.registerTask('default', ['watch']);
     grunt.registerTask('build', runAllTasks);
     grunt.registerTask('buildwp', runWPTasks);
