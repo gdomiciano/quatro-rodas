@@ -11,23 +11,23 @@ Layout 4rodas
  - Make this challenge public on your GitHub account.
 
 **Dependencies**
-	* Node.js - https://nodejs.org/en/download/
-	* NPM - https://docs.npmjs.com/getting-started/installing-node
-	* Grunt - http://gruntjs.com/getting-started
-	* Ruby - http://www.ruby-lang.org/en/downloads/
-	* Compass - http://compass-style.org/install/
+* Node.js - https://nodejs.org/en/download/
+* NPM - https://docs.npmjs.com/getting-started/installing-node
+* Grunt - http://gruntjs.com/getting-started
+* Ruby - http://www.ruby-lang.org/en/downloads/
+* Compass - http://compass-style.org/install/
 	
 **Setup**
-	1. Open your terminal;
-	1. Clone this project: `git clone https://github.com/gdomiciano/responsive-header.git`;
-	1. Go to the project directory: `cd responsive-header`;
-	1. Install the project dependencies: `npm install`;
-	1. Compile the project via task runner: `grunt build`;
-	1. Open `dist/index.html` on Google Chrome.
+1. Open your terminal;
+1. Clone this project: `git clone https://github.com/gdomiciano/responsive-header.git`;
+1. Go to the project directory: `cd responsive-header`;
+1. Install the project dependencies: `npm install`;
+1. Compile the project via task runner: `grunt build`;
+1. Open `dist/index.html` on Google Chrome.
 	
 **Customized Wordpress Theme**
-	* The assets are compiled from source directory to wordpress theme directory when the command `grunt buildwp` is executed;
-	* The template files are in the following path: wordpress/wp-content/themes/quatrorodas/ .
+* The assets are compiled from source directory to wordpress theme directory when the command `grunt buildwp` is executed;
+* The template files are in the following path: wordpress/wp-content/themes/quatrorodas/ .
 
 ### Libraries/Frameworks ###
 
